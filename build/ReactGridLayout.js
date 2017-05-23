@@ -96,8 +96,8 @@ var ReactGridLayout = function (_React$Component) {
 
 
   ReactGridLayout.prototype.containerHeight = function containerHeight() {
-    if (!this.props.autoSize) return;
-    var nbRow = (0, _utils.bottom)(this.state.layout);
+    if (!this.props.autoSize && this.props.maxRows !== Infinity) return;
+    var nbRow = this.props.maxRows !== Infinity ? this.props.maxRows : (0, _utils.bottom)(this.state.layout);
     var containerPaddingY = this.props.containerPadding ? this.props.containerPadding[1] : this.props.margin[1];
     return nbRow * this.props.rowHeight + (nbRow - 1) * this.props.margin[1] + containerPaddingY * 2 + 'px';
   };
